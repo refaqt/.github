@@ -1,0 +1,6 @@
+{
+  "name": "Refaqt contributor agreement",
+  "description": "Checks that everyone in a pull request has accepted the Refaqt Contributor Licence Agreement.",
+  "iconName": "octicon law",
+  "categories": ["Automation"]
+}
