@@ -54,6 +54,10 @@ the author of the commit.
 If someone else helped you with a commit, for example a co-author, that person must also accept
 the agreement.
 
+If you use an AI coding assistant (for example Claude, Cursor or Copilot), its commits count as
+your work. The check then asks you, the person who opened the pull request, to accept the
+agreement. You are responsible for that work, as for your own.
+
 ### Companies
 
 If you contribute as an employee, a freelancer for a client, or a partner company's staff

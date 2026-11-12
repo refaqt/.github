@@ -19,7 +19,7 @@ agreement with the usual comment on their first pull request.
 
 This addendum is between **Refaqt**, a private limited company (besloten vennootschap) under
 Belgian law, company number BE 0804.145.539, with its registered office at
-[REGISTERED ADDRESS — to fill in] ("**Refaqt**"), and the organisation named below
+Platte Lostraat 347, 3010 Leuven, Belgium ("**Refaqt**"), and the organisation named below
 ("**the Company**").
 
 1. **Same terms.** The Company accepts the Refaqt Contributor Licence Agreement version 1.0 (the
@@ -57,7 +57,7 @@ Belgian law, company number BE 0804.145.539, with its registered office at
 | --- | --- | --- |
 | Legal name | Refaqt | |
 | Company number | BE 0804.145.539 | |
-| Address | [to fill in] | |
+| Address | Platte Lostraat 347, 3010 Leuven, Belgium | |
 | Name of signer | | |
 | Function | | |
 | Date | | |

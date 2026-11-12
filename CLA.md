@@ -26,7 +26,7 @@
 
 This agreement is between **Refaqt**, a private limited company (besloten vennootschap) under
 Belgian law, company number BE 0804.145.539, with its registered office at
-[REGISTERED ADDRESS — to fill in] ("**Refaqt**", "**we**", "**us**"), and the person who accepts
+Platte Lostraat 347, 3010 Leuven, Belgium ("**Refaqt**", "**we**", "**us**"), and the person who accepts
 it ("**you**").
 
 ### 1. Definitions
@@ -236,7 +236,7 @@ Authority (Gegevensbeschermingsautoriteit / Autorité de protection des données
 
 ### 9. Contact
 
-Refaqt, [REGISTERED ADDRESS — to fill in], [CONTACT EMAIL — to fill in].
+Refaqt, Platte Lostraat 347, 3010 Leuven, Belgium, niels.bosmans@refaqt.com.
 
 ### 10. General terms
 
