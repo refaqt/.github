@@ -54,14 +54,29 @@ jobs:
 
             const accounts = new Map();   // id -> login
             const unlinked = new Set();   // "Name <email>" of commits without a GitHub account
+            // AI coding assistants cannot sign a contract. A person runs them and opens the pull
+            // request, so their commits count as that person's work: the pull request author
+            // must have accepted the agreement instead.
+            const AI_LOGINS = new Set(['claude', 'cursoragent', 'copilot', 'copilot-swe-agent', 'devin-ai-integration']);
+            const AI_EMAILS = [/@anthropic\.com$/i, /@cursor\.com$/i, /copilot/i];
+            const isAi = (login, email) =>
+              (login && AI_LOGINS.has(login.toLowerCase())) ||
+              (email && AI_EMAILS.some(r => r.test(email)));
+            let aiCommits = false;
             for (const c of commits) {
+              const a = c.commit.author || {};
               if (c.author && c.author.id) {
                 if (c.author.type === 'Bot' || c.author.login.endsWith('[bot]')) continue;
+                if (isAi(c.author.login, a.email)) { aiCommits = true; continue; }
                 accounts.set(String(c.author.id), c.author.login);
+              } else if (isAi(null, a.email)) {
+                aiCommits = true;
               } else {
-                const a = c.commit.author || {};
                 unlinked.add(`${a.name || 'unknown'} <${a.email || 'no email'}>`);
               }
+            }
+            if (aiCommits && pr.user && pr.user.type !== 'Bot') {
+              accounts.set(String(pr.user.id), pr.user.login);
             }
 
             let signer = null;
