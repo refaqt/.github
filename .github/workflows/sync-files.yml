@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025-2026 Refaqt (BE 0804.145.539) and contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Copies the shared files listed in .github/sync-files.json to every Refaqt repository.
+# It opens one pull request per repository that has a missing or old copy. It never writes to
+# a default branch.
+#
+# It needs the GitHub App "Refaqt file sync", installed on all repositories of the organisation:
+#   - organisation variable SYNC_APP_ID: the App ID;
+#   - organisation secret SYNC_APP_PRIVATE_KEY: the App's private key (.pem file content).
+# See README.md, section "Setup that a maintainer does once".
+
+name: Sync shared files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "workflow-templates/**"
+      - ".github/sync-files.json"
+      - ".github/scripts/sync-files.js"
+      - ".github/workflows/sync-files.yml"
+  schedule:
+    # Every Monday at 05:17 UTC. This also reaches repositories that were made since the last run.
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only report what would change. Write nothing."
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-shared-files
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get a token for the GitHub App
+        id: app
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.SYNC_APP_ID }}
+          private-key: ${{ secrets.SYNC_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
+      - name: Sync the files
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.app.outputs.token }}
+          script: |
+            const run = require('./.github/scripts/sync-files.js');
+            await run({ github, context, core, dryRun: ${{ inputs.dry_run == true }} });

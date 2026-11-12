@@ -1,0 +1,9 @@
+{
+  "files": [
+    {
+      "source": "workflow-templates/contributor-agreement.yml",
+      "target": ".github/workflows/contributor-agreement.yml"
+    }
+  ],
+  "skip_repos": [".github"]
+}
