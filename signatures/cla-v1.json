@@ -1,0 +1,14 @@
+{
+  "agreement": "https://github.com/refaqt/.github/blob/main/CLA.md",
+  "version": "1.0",
+  "signatures": [
+    {
+      "login": "nielsbosmans87",
+      "id": 230584336,
+      "version": "1.0",
+      "signed_at": "2026-11-12T12:40:26.883Z",
+      "pull_request": "refaqt/refaqt-business#13",
+      "comment_url": "https://github.com/refaqt/refaqt-business/pull/13#issuecomment-6823863384"
+    }
+  ]
+}
